@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: #faf9f6;
+  --foreground: #303e37;
+  --card: #ffffff;
+  --card-foreground: #303e37;
+  --primary: #185341;
+  --primary-dark: #103d30;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f4ed;
+  --secondary-foreground: #185341;
+  --muted: #f5f4ef;
+  --muted-foreground: #5b665f;
+  --accent: #dfeade;
+  --accent-foreground: #185341;
+  --brass: #a87932;
+  --brass-light: #f2e7cf;
+  --border: #dce3d9;
+  --ring: #185341;
+  --radius: 12px;
+  --hero-gradient-start: #e8eee2;
+  --footer-bg: #103d30;
+  --footer-text: #d0ddd2;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-brass: var(--brass);
+  --color-brass-light: var(--brass-light);
+  --radius: var(--radius);
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Manrope", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--foreground);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+@layer base {
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    @apply cursor-pointer;
+  }
+
+  button:disabled,
+  input:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .invoice-actions,
+  .admin-sidebar,
+  .admin-topbar,
+  .admin-sidebar-overlay {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  .invoice-sheet {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+
+@layer base {
+  ::selection {
+    background: var(--accent);
+    color: var(--primary-dark);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 4px;
+  }
+
+  section[id] {
+    scroll-margin-top: 96px;
+  }
+
+  /* Keep the existing raster brand marks in step with the forest palette. */
+  img[src="/images/logo.png"],
+  img[src="/images/text-logo.png"],
+  img[src="/images/admin-logo.png"],
+  img[src="/images/web-logo.png"],
+  img[src*="%2Fimages%2Flogo.png"],
+  img[src*="%2Fimages%2Ftext-logo.png"],
+  img[src*="%2Fimages%2Fadmin-logo.png"],
+  img[src*="%2Fimages%2Fweb-logo.png"] {
+    filter: hue-rotate(-65deg) saturate(0.45) brightness(0.72);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

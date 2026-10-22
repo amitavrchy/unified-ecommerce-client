@@ -1,0 +1,111 @@
+"use client";
+
+import { ArrowRight, CalendarDays, ShoppingBasket, Wrench } from "lucide-react";
+import { motion, MotionConfig } from "framer-motion";
+import { fadeUp, inView, staggerContainer } from "@/components/shared/motion";
+
+export default function CTACards() {
+  return (
+    <MotionConfig reducedMotion="user">
+      <section className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-10 py-10">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+        >
+          {/* Shop Products */}
+          <motion.div
+            className="relative overflow-hidden rounded-[24px] bg-[var(--secondary)] p-7 sm:p-8 min-h-[240px] flex flex-col justify-between"
+            variants={fadeUp}
+          >
+            {/* Decorative circle */}
+            <div className="pointer-events-none absolute -top-[65px] -right-[35px] w-[160px] h-[160px] rounded-full border-[18px] border-primary/10 opacity-70" />
+
+            <div className="relative z-10">
+              <div className="w-11 h-11 rounded-[10px] bg-[var(--primary)] flex items-center justify-center mb-5">
+                <ShoppingBasket
+                  size={22}
+                  strokeWidth={2}
+                  className="text-white"
+                />
+              </div>
+
+              <div>
+                <h3
+                  className="text-[22px] sm:text-[24px] font-bold text-[var(--primary)] leading-8 mb-2"
+                  style={{ fontFamily: "Manrope, sans-serif" }}
+                >
+                  Shop Products
+                </h3>
+
+                <p
+                  className="text-[16px] text-[#5b5b5b] leading-[26px] max-w-[540px]"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Browse premium vacuum systems, architectural inlets, and
+                  high-performance accessories.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="#products"
+              className="relative z-10 mt-5 inline-flex w-fit items-center gap-2 text-[16px] font-semibold text-[var(--primary)] hover:gap-3 transition-all duration-200"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Shop Now
+              <ArrowRight size={18} strokeWidth={2} />
+            </a>
+          </motion.div>
+
+          {/* Book a Service */}
+          <motion.div
+            className="relative overflow-hidden rounded-[24px] p-7 sm:p-8 min-h-[240px] flex flex-col justify-between"
+            style={{
+              background:
+                "linear-gradient(115.35deg, var(--primary-dark) 0.71%, var(--primary) 99.24%)",
+            }}
+            variants={fadeUp}
+          >
+            <div className="pointer-events-none absolute -top-[70px] -right-[40px] w-[165px] h-[165px] rounded-full border-[18px] border-white/[0.06]" />
+            <div className="pointer-events-none absolute -top-[38px] -right-[8px] w-[100px] h-[100px] rounded-full bg-white/[0.03]" />
+
+            <div className="relative z-10">
+              <div className="w-11 h-11 rounded-[10px] bg-white/10 backdrop-blur-[4px] flex items-center justify-center mb-5">
+                <Wrench size={22} strokeWidth={2} className="text-white" />
+              </div>
+
+              <div>
+                <h3
+                  className="text-[22px] sm:text-[24px] font-bold text-white leading-8 mb-2"
+                  style={{ fontFamily: "Manrope, sans-serif" }}
+                >
+                  Book a Service
+                </h3>
+
+                <p
+                  className="text-[16px] text-white/80 leading-[26px] max-w-[540px]"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Schedule professional repair, maintenance, or expert
+                  installation for your central system.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="#services"
+              className="relative z-10 mt-5 inline-flex w-fit items-center gap-2 text-[16px] font-semibold text-white hover:opacity-80 transition-opacity"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Request Service
+              <CalendarDays size={17} strokeWidth={2} />
+            </a>
+          </motion.div>
+        </motion.div>
+      </section>
+    </MotionConfig>
+  );
+}

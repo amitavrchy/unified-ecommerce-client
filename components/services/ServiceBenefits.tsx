@@ -1,0 +1,69 @@
+"use client";
+
+import {
+  BadgeCheck,
+  FileText,
+  Microscope,
+  ThumbsUp,
+} from "lucide-react";
+import { motion, MotionConfig } from "framer-motion";
+import { fadeUp, inView, staggerContainer } from "@/components/shared/motion";
+
+const benefits = [
+  {
+    title: "Expert Technicians",
+    icon: BadgeCheck,
+  },
+  {
+    title: "Accurate Diagnosis",
+    icon: Microscope,
+  },
+  {
+    title: "Transparent Quotation",
+    icon: FileText,
+  },
+  {
+    title: "Reliable Service",
+    icon: ThumbsUp,
+  },
+];
+
+export default function ServiceBenefits() {
+  return (
+    <MotionConfig reducedMotion="user">
+      <section>
+        <div className="mx-auto max-w-[1320px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+          <motion.div
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+          >
+            {benefits.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={item.title}
+                  className="flex min-h-[120px] flex-col items-center justify-center rounded-[10px] border border-[var(--secondary)] bg-[#f8fbff] px-5 text-center"
+                  variants={fadeUp}
+                >
+                  <Icon
+                    size={25}
+                    strokeWidth={1.7}
+                    className="text-[var(--primary)]"
+                  />
+
+                  <p className="mt-4 text-[14px] font-semibold text-[#3e5047]">
+                    {item.title}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+    </MotionConfig>
+  );
+}
